@@ -19,6 +19,10 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/te
   novnc && \
   ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html
 
+RUN echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
+RUN echo "http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+
 # setup supervisor
 COPY supervisor /tmp
 SHELL ["/bin/bash", "-c"]
