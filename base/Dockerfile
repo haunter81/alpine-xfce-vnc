@@ -3,7 +3,7 @@ FROM alpine:3.12
 ENV DISPLAY :1
 # alternative 1024x768x16
 ENV RESOLUTION 1920x1080x24
-ENV PASS="revan1981"
+ENV PASS="pass123"
 
 # setup desktop environment (xfce4), display server (xvfb), vnc server (x11vnc)
 RUN apk add --no-cache \
