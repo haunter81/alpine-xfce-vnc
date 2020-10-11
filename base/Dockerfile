@@ -3,13 +3,15 @@ FROM alpine:3.12
 ENV DISPLAY :1
 # alternative 1024x768x16
 ENV RESOLUTION 1920x1080x24
+ENV PASS="revan1981"
 
 # setup desktop environment (xfce4), display server (xvfb), vnc server (x11vnc)
 RUN apk add --no-cache \
   xfce4 \
   faenza-icon-theme \
   xvfb \
-  x11vnc
+  x11vnc \
+  xfce4-terminal
 
 # setup novnc (requires bash)
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
@@ -26,5 +28,7 @@ RUN apk add --no-cache supervisor && \
   mkdir -pv /etc/supervisor/conf.d /var/log/{novnc,x11vnc,xfce4,xvfb} && \
   mv /tmp/supervisor-*.ini /etc/supervisor/conf.d/ && \
   rm -fr /tmp/supervisor*
+
+EXPOSE 5900
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
