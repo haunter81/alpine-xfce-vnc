@@ -33,6 +33,85 @@ RUN apk add --no-cache supervisor && \
   mv /tmp/supervisor-*.ini /etc/supervisor/conf.d/ && \
   rm -fr /tmp/supervisor*
 
+
+#import start
+RUN \
+	apk --no-cache add \
+		desktop-file-utils \
+		exo \
+		garcon \
+		gtk+2.0 \
+		libxfce4ui \
+		libxfce4util \
+		thunar \
+		thunar-archive-plugin \
+		ttf-dejavu \
+		ttf-freefont \
+		xarchiver \
+		xdotool \
+		xfce4-appfinder \
+		xfce4-panel \
+		xfce4-settings \
+		xfce4-terminal \
+		xfconf \
+		xfdesktop \
+		xterm \
+		yad
+
+RUN \
+	apk --no-cache add \
+		bash \
+		bash-completion \
+		bash-doc \
+		ca-certificates \
+		curl \
+		dbus \
+		dbus-x11 \
+		eudev \
+		ffmpeg \
+		ffmpeg-libs \
+		fuse \
+		git \
+		htop \
+		java-jna \
+		libgcc \
+		libmediainfo \
+		libstdc++ \
+		mandoc \
+		mandoc-apropos \
+		mandoc-soelim \
+		man-pages \
+		mc \
+		mesa-dri-swrast \
+		mediainfo \
+		nano \
+		nss \
+		openjdk8-jre \
+		p7zip \
+		p7zip-doc \
+		python3 \
+		py3-pip \
+		py3-qt5 \
+		qt5-qtbase \
+		qt5-qtsvg \
+		rsync \
+		rtmpdump \
+		screen \
+		sudo \
+		tar \
+		tar-doc \
+		tmux \
+		unrar \
+		unzip \
+		util-linux \
+		vim \
+		wget \
+		wxgtk \
+		xz \
+		xz-doc \
+		zip \
+	&& update-ca-certificates
+
 EXPOSE 5900
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
